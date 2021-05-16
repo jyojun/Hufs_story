@@ -114,7 +114,8 @@ class Home extends Component{
 
             var i=this.state.selected_content_id;
             var data=this.state.contents[i];
-        
+            
+            console.log(data);
             _title=this.getReadContent().title;
             _desc=this.getReadContent().desc;
             //console.log(this.getReadContent());
@@ -140,8 +141,8 @@ class Home extends Component{
                             _contents.splice(i,1);
                             this.setState({
                                 mode:'welcome',
-                                total_contents:_contents,
-                                max_content_id:new_max_content_id
+                                total_contents:_contents
+                                //max_content_id:new_max_content_id
                             });
                             alert("삭제되었습니다.");
                         }
@@ -173,8 +174,8 @@ class Home extends Component{
                             _contents.splice(i,1);
                             this.setState({
                                 mode:'read',
-                                total_contents:_contents,
-                                max_content_id:new_max_content_id,
+                                total_contents:_contents
+                                //max_content_id:new_max_content_id,
                             });
                             alert("삭제되었습니다.");
                         }
