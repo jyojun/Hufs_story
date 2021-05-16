@@ -3,21 +3,14 @@ import React,{Component} from "react";
 class CreateContent extends Component{
     render(){
         return(
-
             <article className = 'writing-form'>
                 <h2 className = "form-title">청원글 작성하기</h2>
                 <form className = "form-content" method="post"
-
-            <article>
-                <h2>Create</h2>
-                <form method="post"
-
                     onSubmit={function(e){
                       
                         e.preventDefault();
                         
                         this.props.onSubmit(
-
                             e.target.selectBox.value,
                             e.target.title.value,
                             e.target.desc.value
@@ -38,15 +31,6 @@ class CreateContent extends Component{
                         </select>
                     </p>
                     <p><input type="text" name="title" placeholder="title"></input></p>
-
-                            e.target[0].value,
-                            e.target[1].value
-                        );
-                        alert("submit");
-                    }.bind(this)}
-                >
-                    <p><input type="text" placeholder="title"></input></p>
-
                     <p>
                         <textarea name="desc" placeholder="description"></textarea>
                     </p>
