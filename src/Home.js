@@ -17,7 +17,7 @@ class Home extends Component{
         super(props);
         this.state={
             max_content_id:4,//전체 게시물 번호 매김
-            mode:'welcome',
+            mode:'post',
             selected_content_id:0,//선택된 게시글 번호
             selected_type_id:0,//카테고리 id
             selected_category: "전체",
@@ -61,8 +61,8 @@ class Home extends Component{
         var _title,_desc,_article=null;
 
         var _type =
-            <Type onchangePage={function(category){
-                var _category = this.state.selected_category;
+            <Type onchangePage={function(selected_category){
+                var _category = selected_category;
                 var _contents = Array.from(this.state.total_contents);
                 var category_contents = [];
                 var i = 0;
@@ -82,9 +82,10 @@ class Home extends Component{
                 this.setState({
                 mode:'post',
                 //selected_type_id:Number(id),
-                selected_category: category,
+                selected_category: _category,
                 contents: category_contents
                 });
+                console.log(_category);
                 }.bind(this)}
                 data={this.state.type}/>
 
@@ -140,8 +141,9 @@ class Home extends Component{
                             var _contents=Array.from(this.state.total_contents);
                             _contents.splice(i,1);
                             this.setState({
-                                mode:'welcome',
-                                total_contents:_contents
+                                total_contents:_contents,
+                                selected_category: "전체",
+                                mode: 'post'
                                 //max_content_id:new_max_content_id
                             });
                             alert("삭제되었습니다.");
@@ -174,8 +176,8 @@ class Home extends Component{
                             _contents.splice(i,1);
                             this.setState({
                                 mode:'read',
-                                total_contents:_contents
-                                //max_content_id:new_max_content_id,
+                                total_contents:_contents,
+                                max_content_id:new_max_content_id
                             });
                             alert("삭제되었습니다.");
                         }
@@ -198,7 +200,9 @@ class Home extends Component{
                     console.log(_contents);
                     this.setState({
                         total_contents:_contents,
-                        mode:'read', 
+                        contents:_contents,
+                        selected_category: "전체",
+                        mode:'post', 
                         max_content_id:new_max_content_id
                     })
 
