@@ -60,9 +60,9 @@ class Home extends Component{
     render(){
         var _title,_desc,_article=null;
 
-        var _type =
-            <Type onchangePage={function(selected_category){
-                var _category = selected_category;
+        var _type = //카테고리 분류 
+            <Type onchangePage={function(category){
+                var _category = category;
                 var _contents = Array.from(this.state.total_contents);
                 var category_contents = [];
                 var i = 0;
@@ -141,10 +141,11 @@ class Home extends Component{
                             var _contents=Array.from(this.state.total_contents);
                             _contents.splice(i,1);
                             this.setState({
-                                total_contents:_contents,
+                                contents:_contents,
                                 selected_category: "전체",
-                                mode: 'post'
-                                //max_content_id:new_max_content_id
+                                mode:'post', 
+                                total_contents:_contents,
+                               // max_content_id:new_max_content_id
                             });
                             alert("삭제되었습니다.");
                         }
@@ -177,7 +178,7 @@ class Home extends Component{
                             this.setState({
                                 mode:'read',
                                 total_contents:_contents,
-                                max_content_id:new_max_content_id
+                                max_content_id:new_max_content_id,
                             });
                             alert("삭제되었습니다.");
                         }
@@ -214,7 +215,8 @@ class Home extends Component{
             i=this.state.selected_content_id;
             var _content=this.state.total_contents[i];
             _article=<UpdateContent data={_content} onSubmit={
-                function(_id,_category,_title,_desc){
+                function(_category,_title,_desc){
+                    var _id=_content.id;
                     console.log(_id, _category, _title, _desc);
                     i=this.state.selected_content_id;
                     var _type=this.state.selected_type_id;
@@ -223,7 +225,9 @@ class Home extends Component{
     
                     this.setState({
                         total_contents:_contents,
-                        mode:'read'
+                        contents : _contents,
+                        mode:'post',
+                        selected_category: "전체"
                     })
                     
                 }.bind(this)}>
@@ -249,7 +253,6 @@ class Home extends Component{
                     var _contents = Array.from(this.state.total_contents);
                     var category_contents = [];
                     var i = 0;
-
                     if(_category === "전체") {
                         category_contents = _contents;
                     } else {
@@ -261,7 +264,6 @@ class Home extends Component{
                         }
                     }
                         
-
                     this.setState({
                     mode:'post',
                     //selected_type_id:Number(id),
@@ -271,7 +273,7 @@ class Home extends Component{
                     }.bind(this)}
                     data={this.state.type}/> */}
                 
-                {_type}
+                {_type} 
                 {_article}
                 {_table}
                 

@@ -4,12 +4,12 @@ class UpdateContent extends Component{
     constructor(props){
         super(props);
         this.state={
-            id:this.props.data.id,
+       
             category:this.props.data.category,
             title:this.props.data.title,
             desc:this.props.data.desc
         }
-       
+
     }
     inputFormHandler(e){
  
@@ -27,7 +27,6 @@ class UpdateContent extends Component{
             }
             i = i + 1;
         }
-        console.log(selected_options);
         return(
             <article className = "writing-form">
                 <h2 className = "form-title">작성한 청원글 수정하기</h2>
@@ -37,7 +36,7 @@ class UpdateContent extends Component{
                         e.preventDefault();
                         
                         this.props.onSubmit(
-                            this.state.id,
+                            //this.state.id,
                             this.state.category,
                             this.state.title,
                             this.state.desc
@@ -47,7 +46,7 @@ class UpdateContent extends Component{
                 >   
                     <input type="hidden" name="id" value={this.state.id}></input>
                     <p>
-                        <select name="selectBox" defaultValue={this.state.category} onChange={this.inputFormHandler.bind(this)}>
+                    <select name="selectBox" defaultValue={this.state.category} onChange={this.inputFormHandler.bind(this)}>
                             <option value="기숙사">기숙사</option>
                             <option value="교육">교육</option>
                             <option value="편의시설">편의시설</option>
