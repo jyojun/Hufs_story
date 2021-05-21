@@ -8,7 +8,7 @@ class Type extends Component{
         var i=0;
         while(i<data.length){
             lists.push(
-                <td className='table-column' key={data[i].id}>
+                <li className='category_link' key={data[i].id}>
                 <a 
                 href={"/content/"+data[i].id}
                 data-id={data[i].id}
@@ -21,19 +21,19 @@ class Type extends Component{
                 >
                 {data[i].desc}
                 </a>
-                </td>
+                </li>
             )
             i=i+1;
         }
         return(
-            <table className="table"> 
-                <tbody>
-                    <tr className='table-row'>
-                        {lists}
-                    </tr>
-                </tbody>
-            </table>
-
+            <div class="category_div">
+                <h2>청원 분야별 보기</h2>
+                <ul class="category_area">
+                    {
+                        lists
+                    }
+                </ul>
+            </div>
         );
     }
 };

@@ -12,6 +12,7 @@ import Type from "./Type";
 import "./table/Table.css";
 
 
+
 class Home extends Component{
     constructor(props){
         super(props);
@@ -91,7 +92,8 @@ class Home extends Component{
 
         var _table = 
             <>
-                <div>
+                <div className="article-table">
+                    <h2>청원 글 목록</h2>
                     <table className = "table"> 
                         <ArticleTableHead headersName = {['글번호', '분류', '제목', '만료일', '청원인원']}></ArticleTableHead>
                         <ArticleTableBody data = {this.state.contents} onchangePage= {function(id){
@@ -108,7 +110,7 @@ class Home extends Component{
             <>
 
             </>
-            console.log(this.state.contents);
+           
                
         }
         else if(this.state.mode==='read'){ //선택된 게시물과 리스트가 같이 뜸 
@@ -118,9 +120,13 @@ class Home extends Component{
             
             console.log(data);
             _title=this.getReadContent().title;
+            var _category=this.getReadContent().category;
+            var _expire=this.getReadContent().expire;
             _desc=this.getReadContent().desc;
+            var _agree=this.getReadContent().people_num;
             //console.log(this.getReadContent());
             //console.log(_title, _desc);
+            console.log(_agree);
             _article=<>
                
                 
@@ -132,7 +138,7 @@ class Home extends Component{
             }.bind(this)}
             data={this.state.contents}/> */}
                     
-            <ReadContent title={_title} desc={_desc}/>        
+            <ReadContent title={_title} desc={_desc} agree={_agree} category={_category} expire={_expire}/>       
             <UpdateControl  onchangeMode={function(_mode){
                     if(_mode==='delete'){
                         if(window.confirm("이 게시물을 삭제하시겠습니까?")){
@@ -149,11 +155,29 @@ class Home extends Component{
                             });
                             alert("삭제되었습니다.");
                         }
-                    }else{
+                    }else if(_mode=='agree'){
+                       if(window.confirm("청원에 동의하시겠습니까?")){
+                            var _category=this.state.selected_category;
+                
+                            var i=this.state.selected_content_id;
+                            var _contents=Array.from(this.state.total_contents);
+                            _contents[i].people_num+=1;
+                            this.setState({
+                                mode:'read',
+                                total_contents:_contents,
+                                //contents:_contents
+
+                            });
+                       };
+                    
+                    }
+                    else{
                         this.setState({mode:_mode});
                     }
                
                 }.bind(this)}/>
+             
+           
 
             </>
            
@@ -201,7 +225,7 @@ class Home extends Component{
                     console.log(_contents);
                     this.setState({
                         total_contents:_contents,
-                        contents:_contents,
+                        //contents:_contents,
                         selected_category: "전체",
                         mode:'post', 
                         max_content_id:new_max_content_id
@@ -225,9 +249,10 @@ class Home extends Component{
     
                     this.setState({
                         total_contents:_contents,
-                        contents : _contents,
+                        contents:_contents,
                         mode:'post',
-                        selected_category: "전체"
+                        selected_category: "전체",
+                        
                     })
                     
                 }.bind(this)}>

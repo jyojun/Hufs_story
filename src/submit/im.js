@@ -1,4 +1,3 @@
-
 import React,{Component} from "react";
 import Control from "./control";
 import ReadContent from "./ReadContent";
