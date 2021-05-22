@@ -9,7 +9,7 @@ class ArticleTableBody extends Component {
       lists.push(
         <tr className = "table-row" key={data[i].id}>
           <td className="table-column">
-            <a 
+            <a
               href={"/contents/"+data[i].category}
               data-id={data[i].id}
               onClick={function(e){
