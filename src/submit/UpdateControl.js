@@ -21,10 +21,17 @@ class UpdateControl extends Component{//create update delete 기능
                                 var a='delete';
                                 e.preventDefault();
                                 this.props.onchangeMode(a);
-                            }.bind(this)}>글 삭제하기</button></td>
+                            }.bind(this)}>글 삭제하기</button>
+                            <a className="goToPost-button" href="/post" onClick={function(e){
+                                var a='post';
+                                e.preventDefault();
+                                this.props.onchangeMode(a);
+                            }.bind(this)}>글 목록</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+
       
          );
        

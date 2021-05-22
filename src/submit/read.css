@@ -104,7 +104,7 @@
     margin-top: 20px;
     text-align: center;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     border-radius: 5px;
 }
 
@@ -176,6 +176,16 @@ ul{
 
 .control-table .delete-button{
     background-color: rgba(0, 45, 86, 0.2);
+    padding: 10px 10px;
+    text-decoration: none;
+    color: black;
+    border: 0;
+    margin-right: 20px;
+    outline: 0;
+}
+
+.control-table .goToPost-button{
+    background-color: rgba(141, 113, 80, 0.3);
     padding: 10px 10px;
     text-decoration: none;
     color: black;
