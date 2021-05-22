@@ -93,7 +93,8 @@ class Home extends Component{
 
         _table = 
             <>
-                <div>
+                <div className="article-table">
+                    <h2>청원 글 목록</h2>
                     <table className = "table"> 
                         <ArticleTableHead headersName = {['글번호', '분류', '제목', '만료일', '청원인원']}></ArticleTableHead>
                         <ArticleTableBody data = {this.state.contents} onchangePage= {function(id){
@@ -113,6 +114,8 @@ class Home extends Component{
             var i=this.state.selected_content_id;
         
             _title=this.getReadContent().title;
+            var _category=this.getReadContent().category;
+            var _expire=this.getReadContent().expire;
             _desc=this.getReadContent().desc;
             var _category=this.getReadContent().category;
             var _expire=this.getReadContent().expire;
