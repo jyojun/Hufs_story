@@ -3,12 +3,12 @@ import React, { Component, Children } from 'react';
 class ArticleTableHead extends Component {
   render() {
     return (
-      <thead>
-        <tr className = "table-row">
+      <thead className="">
+        <tr className = "text-white">
             {
               this.props.headersName.map((item, index) => {
                 return(
-                  <td className="table-header-column" key={index}>{item}</td>
+                  <td className="bg-white text-black py-5" key={index}>{item}</td>
                 )
               })
             }

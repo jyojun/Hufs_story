@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ArticleTableHead from './ArticleTableHead';
 import ArticleTableBody from './ArticleTableBody';
-//import './Table.css'
  
 class Articles extends Component {
   constructor(props){
@@ -31,7 +30,7 @@ class Articles extends Component {
   render() {
     return(
       <div>
-        <table className = "table"> 
+        <table className = "w-full"> 
           <ArticleTableHead headersName = {['글번호', '분류', '제목', '만료일', '청원인원']}></ArticleTableHead>
           
         </table>

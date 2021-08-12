@@ -27,10 +27,15 @@ class UpdateContent extends Component{
             i = i + 1;
         }
         return(
-            <article className = "writing-form">
-                <h2 className = "form-title">청원하기</h2>
-                <hr className="Tline"></hr>
-                <form className = "form-content" method="post"
+            <article className = "mx-80 p-5 flex flex-col justify-center items-center mt-20">
+                <h2 className = "w-full mb-16 font-medium text-2xl">
+                    <div>
+                        청원 하기
+                    </div>
+                    <div className="mt-6 border-b-2 border-gray-800">
+                    </div>
+                </h2>
+                <form className = "w-full flex flex-col" method="post"
                     onSubmit={function(e){
                       
                         e.preventDefault();
@@ -46,11 +51,14 @@ class UpdateContent extends Component{
                 >   
                     <input type="hidden" name="id" value={this.state.id}></input>
                     
-                    <p className="createFont">청원 분야</p >
-                    <select name="selectBox" 
+                    <p className="mb-2 font-medium text-lg">청원 분야</p >
+                    <select
+                    className="p-3 bg-gray-100 border-2 border-gray-200 shadow-inner mb-16 hover:border-gray-400" 
+                    name="selectBox" 
                     defaultValue={this.state.category}
+                    style={{width:'60%'}}
                     onChange={this.inputFormHandler.bind(this)} 
-                    style={{width:'90%'}}>
+                    >
 
                         <option value="기숙사">기숙사</option>
                         <option value="교육">교육</option>
@@ -61,29 +69,30 @@ class UpdateContent extends Component{
                         <option value="기타">기타</option>
                     </select>
                     
-                    <p  className="createFont">청원 제목</p >
+                    <p  className="mb-2 font-medium text-lg">청원 제목</p >
                     <input 
+                        className="p-3 bg-gray-100 border-2 border-gray-200 shadow-inner mb-16 hover:border-gray-400"
                         type="text"
                         name="title"
                         placeholder="제목을 입력해주세요"
                         value={this.state.title}
-                        style={{width:'90%'}}
                         onChange={this.inputFormHandler.bind(this)}
                     ></input>
 
-                    <p  className="createFont">청원 내용</p >
+                    <p  className="mb-2 font-medium text-lg">청원 내용</p >
                     <textarea 
+                        className="p-3 bg-gray-100 border-2 border-gray-200 h-96 shadow-inner mb-5 hover:border-gray-400"
                         name="desc" 
-                        placeholder="청원 내용을 입력해주세요" 
-                        style={{width:'90%',height:'437px'}}
+                        placeholder="청원 내용을 입력해주세요"
                         value={this.state.desc}  
                         onChange={this.inputFormHandler.bind(this)}
                     ></textarea>
-                    
-                    <p>
-                        <input type="submit"
+                    <div className="my-6 border-b-2 border-gray-800"></div>
+                    <p className="flex justify-end">
+                        <input
+                        className="p-3 py-2 border-2 bg-gray-800 text-white rounded" 
+                        type="submit"
                         value="수정 완료"
-                        style={{backgroundColor:' #013642',color:'white'}}
                         ></input>
                         
                     </p>

@@ -7,8 +7,8 @@ class ArticleTableBody extends Component {
     var data = this.props.data;
     while(i < data.length){
       lists.push(
-        <tr className = "table-row" key={data[i].id}>
-          <td className="table-column">
+        <tr className = "border-b-2 border-gray-100 border-opacity-80 hover:bg-gray-100" key={data[i].id}>
+          <td className="py-4 w-1/12">
             <a
               href={"/contents/"+data[i].category}
               data-id={data[i].id}
@@ -18,7 +18,7 @@ class ArticleTableBody extends Component {
               }.bind(this)}
             >{data[i].id}</a>
           </td>
-          <td className="table-column">
+          <td className="w-1/12">
             <a 
               href={"/contents/"+data[i].category}
               data-id={data[i].id}
@@ -28,7 +28,7 @@ class ArticleTableBody extends Component {
               }.bind(this)}
             >{data[i].category}</a>
           </td>
-          <td className="table-column">
+          <td className="w-1/3">
             <a 
               href={"/contents/"+data[i].category}
               data-id={data[i].id}
@@ -38,7 +38,7 @@ class ArticleTableBody extends Component {
               }.bind(this)}
             >{data[i].title}</a>
           </td>
-          <td className="table-column">
+          <td className="w-1/6">
             <a 
               href={"/contents/"+data[i].category}
               data-id={data[i].id}
@@ -48,7 +48,7 @@ class ArticleTableBody extends Component {
               }.bind(this)}
             >{data[i].expire}</a>
           </td>
-          <td className="table-column">
+          <td className="w-1/12">
             <a 
               href={"/contents/"+data[i].category}
               data-id={data[i].id}
@@ -62,9 +62,9 @@ class ArticleTableBody extends Component {
       )
       i = i + 1;
     }
-    //console.log(lists);
+    console.log(lists);
     return (
-      <tbody>
+      <tbody className="">
         {lists}
       </tbody>
     )
